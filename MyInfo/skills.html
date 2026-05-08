@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+                  :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+          nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 10%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .skills-section { 
+          font-family: sans-serif; 
+          max-width: 600px; 
+          margin: auto;
+          text-align: center; 
+          justify-content: center;
+        }
+  
+        .filter-controls { 
+          margin-bottom: 20px;
+          justify-content: center;
+          margin-top: 10%;
+        }
+  
+        .filter-btn {
+          padding: 8px 16px;
+          margin: 4px;
+          border: 1px solid #007bff;
+          background: white;
+          color: #007bff;
+          cursor: pointer;
+          border-radius: 4px;
+          transition: 0.3s;
+  }
+        .filter-btn.active, .filter-btn:hover {
+          background: #007bff;
+          color: rgb(0, 0, 0);
+  }
+        .skills-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+  }
+        .skill-card {
+          padding: 10px 20px;
+          background: #070707;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          transition: transform 0.2s, opacity 0.3s;
+  }
+        .contact-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: sans-serif;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+        .form-group {
+            margin-bottom: 15px;
+}
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+}
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+}
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+}
+        .submit-btn:hover {
+            background-color: #0056b3;
+}
+        .hidden { 
+          display: none;
+        }
+         nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 10%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+    
+      <nav>
+        <h2>My Portfolio<span>.</span></h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="#">Gallery</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+<br><br><br><br><br>  
+<div class="skills-section">
+  <h2>Technical Stack</h2>
+  
+
+  <div class="filter-controls">
+    <button class="filter-btn active" onclick="filterSkills('all')">All</button>
+    <button class="filter-btn" onclick="filterSkills('frontend')">Frontend</button>
+    <button class="filter-btn" onclick="filterSkills('backend')">Backend</button>
+    <button class="filter-btn" onclick="filterSkills('tools')">Tools</button>
+  </div>
+  <div class="skills-grid" id="skillsGrid">
+    <div class="skill-card frontend">HTML5</div>
+    <div class="skill-card frontend">CSS3</div>
+    <div class="skill-card frontend">JavaScript</div>
+    <div class="skill-card backend">Node.js</div>
+    <div class="skill-card backend">Python</div>
+    <div class="skill-card backend">PostgreSQL</div>
+    <div class="skill-card tools">Git</div>
+    <div class="skill-card tools">Docker</div>
+    <div class="skill-card frontend">React</div>
+  </div>
+</div>
+<section class="contact-container">
+  <p>Have a question? Fill out the form below and I'll get back to you shortly.</p>
+
+  <form action="https://formspree.io/f/your-id" method="POST" class="contact-form">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="john@example.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+</section>
+<script>
+  function filterSkills(category) {
+    const cards = document.querySelectorAll('.skill-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      if(btn.innerText.toLowerCase() === category) btn.classList.add('active');
+    });
+
+
+    cards.forEach(card => {
+      if (category === 'all' || card.classList.contains(category)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+</script>
+</body>
+</html>
